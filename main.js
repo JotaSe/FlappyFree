@@ -12,6 +12,12 @@ WebFontConfig = {
     active: main
 };
 (function() {
+    var js = document.createElement("script");
+
+    js.type = "text/javascript";
+    js.src = "howler.js";
+
+    document.body.appendChild(js);
     var wf = document.createElement('script');
     var fb = document.createElement('script');
     wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
@@ -26,6 +32,8 @@ WebFontConfig = {
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(wf, s);
     s.parentNode.insertBefore(fb, s);
+    s.parentNode.insertBefore(js, s);
+
 })();
 
 
@@ -100,6 +108,7 @@ function main() {
             scoreSnd,
             hurtSnd,
             bonusSnd,
+            sound,
             fingersTimer,
             cloudsTimer,
             bulletsTimer,
@@ -117,8 +126,8 @@ function main() {
         bg.drawRect(0, 0, game.world.width, game.world.height);
         bg.endFill();
         // add background
-        var plus = game.world.height-800;
-        _background = game.add.tileSprite(0, plus, game.world.width, game.world.height + (plus*-1), 'fondo');
+        var plus = game.world.height - 800;
+        _background = game.add.tileSprite(0, plus, game.world.width, game.world.height + (plus * -1), 'fondo');
         _background.tileScale.setTo(1, 1);
         // Credits 'yo
         credits = game.add.text(
@@ -202,10 +211,11 @@ function main() {
         gameOverText.anchor.setTo(0.5, 0.5);
         gameOverText.scale.setTo(2, 2);
         // Add sounds
-        flapSnd = game.add.audio('flap');
-        scoreSnd = game.add.audio('score');
-        hurtSnd = game.add.audio('hurt');
-        bonusSnd = game.add.audio('bonusSound');
+        sound = createSound();
+        /* flapSnd = game.add.audio('flap');
+         scoreSnd = game.add.audio('score');
+         hurtSnd = game.add.audio('hurt');
+         bonusSnd = game.add.audio('bonusSound');*/
         // Add controls
         game.input.onDown.add(flap);
         // Start clouds timer
@@ -216,7 +226,22 @@ function main() {
         // RESET!
         reset();
     }
+    function createSound()
+    {
+        sound = new Howl({
+            urls: ['assets/spriteSound.wav', 'assets/spriteSound.ogg'],
+            sprite: {
+                bonus: [0, 550],
+                hit: [550, 750],
+                flap: [1350, 150],
+                score: [1500, 1500]
 
+
+            }
+        });
+        return sound;
+
+    }
     function reset() {
         gameStarted = false;
         gameOver = false;
@@ -270,7 +295,7 @@ function main() {
         }
         if (!gameOver) {
             birdie.body.velocity.y = -FLAP;
-            flapSnd.play();
+            sound.play('flap');
         }
     }
 
@@ -485,7 +510,8 @@ function main() {
         invs.remove(inv);
         score += 1;
         scoreText.setText(score + " Millonas");
-        scoreSnd.play();
+        sound.play('score');
+        ;
 
     }
     function addScoreBonus(_, bonus)
@@ -493,7 +519,7 @@ function main() {
         _bonus.remove(bonus);
         score += 1;
         scoreText.setText(score + " Millonas");
-        bonusSnd.play();
+        sound.play('bonus');
         _bonus.forEachAlive(function(bonus) {
             if (bonus.x + bonus.width < game.world.bounds.left) {
                 bonus.kill();
@@ -533,7 +559,7 @@ function main() {
         bulletsTimer.stop();
         // Make birdie reset the game
         game.input.onDown.addOnce(reset);
-        hurtSnd.play();
+        sound.play('hit');
     }
 
     function update() {
