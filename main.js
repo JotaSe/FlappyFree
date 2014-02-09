@@ -117,8 +117,7 @@ function main() {
         bg.drawRect(0, 0, game.world.width, game.world.height);
         bg.endFill();
         // add background
-        var plus = game.world.height - 800;
-        _background = game.add.tileSprite(0, game.world.height - 800, game.world.width, game.world.height + (plus * -1), 'fondo');
+        _background = game.add.tileSprite(0, -230, game.world.width, game.world.height + 230, 'fondo');
         _background.tileScale.setTo(1, 1);
         // Credits 'yo
         credits = game.add.text(
@@ -439,24 +438,27 @@ function main() {
 
         fingersTimer.start();
         var speed;
+        if (score > 1 && score < 5)
+        {
+            speed = 1.3;
+        }
         if (score > 10 && score < 20)
         {
-            speed = 1.4;
+            speed = 1.1;
         }
         else
         if (score > 20 && score < 25)
         {
-            speed = 1.2;
+            speed = 0.9;
         }
         else
         if (score > 25 && score < 35)
         {
-            speed = 1;
         }
         else
         if (score > 35 && score < 40)
         {
-            speed = 0.8;
+            speed = 0.7;
         }
         else
         if (score > 40 && score < 45)
@@ -474,7 +476,7 @@ function main() {
             speed = 0.4;
         }
         else
-            speed = 1.6;
+            speed = 1.5;
         fingersTimer.add(1 / SPAWN_RATE * speed);
     }
 
