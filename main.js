@@ -67,12 +67,13 @@ function main() {
 
             },
             audio: {
-                flap: ['assets/flapping.wav'],
+                //flap: ['assets/flapping.wav'],
                 score: ['assets/winning.wav'],
                 hurt: ['assets/hit.wav'],
                 bonusSound: ['assets/bonus.wav']
             }
         };
+        game.load.audio('flap', ['assets/flapping.wav']);
         Object.keys(assets).forEach(function(type) {
             Object.keys(assets[type]).forEach(function(id) {
                 game.load[type].apply(game.load, [id].concat(assets[type][id]));
