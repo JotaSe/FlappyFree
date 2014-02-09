@@ -109,8 +109,8 @@ function main() {
         // Set world dimensions
         var screenWidth = parent.clientWidth > window.innerWidth ? window.innerWidth : parent.clientWidth;
         var screenHeight = parent.clientHeight > window.innerHeight ? window.innerHeight : parent.clientHeight;
-        game.world.width = screenWidth;
-        game.world.height = screenHeight;
+        game.world.width = window.innerWidth;
+        game.world.height = window.innerHeight ;
         // Draw bg
         bg = game.add.graphics(0, 0);
         bg.beginFill(0xDDEEFF, 1);
