@@ -67,12 +67,18 @@ function main() {
 
             },
             audio: {
-                flap: ['assets/flapping.wav'],
-                score: ['assets/winning.wav'],
-                hurt: ['assets/hit.wav'],
-                bonusSound: ['assets/bonus.wav']
+                //flap: ['assets/flapping.wav'],
+                //score: ['assets/winning.wav'],
+                //hurt: ['assets/hit.wav'],
+                //bonusSound: ['assets/bonus.wav']
             }
         };
+        
+        game.load.audio('flap', ['assets/flapping.mp3']);
+        game.load.audio('score',['assets/winning.wav']);
+        game.load.audio('hurt',['assets/hit.wav']);
+        game.load.audio('bonusSound',['assets/bonus.wav']);
+        
         Object.keys(assets).forEach(function(type) {
             Object.keys(assets[type]).forEach(function(id) {
                 game.load[type].apply(game.load, [id].concat(assets[type][id]));
@@ -106,6 +112,8 @@ function main() {
             bonusTimer;
 
     function create() {
+        //create sounds
+
         // Set world dimensions
         var screenWidth = parent.clientWidth > window.innerWidth ? window.innerWidth : parent.clientWidth;
         var screenHeight = parent.clientHeight > window.innerHeight ? window.innerHeight : parent.clientHeight;
@@ -201,7 +209,7 @@ function main() {
         gameOverText.anchor.setTo(0.5, 0.5);
         gameOverText.scale.setTo(2, 2);
         // Add sounds
-        flapSnd = game.add.audio('flap');
+        flapSnd = game.add.audio('flap',1, true);
         scoreSnd = game.add.audio('score');
         hurtSnd = game.add.audio('hurt');
         bonusSnd = game.add.audio('bonusSound');
