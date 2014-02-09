@@ -440,24 +440,40 @@ function main() {
         var speed;
         if (score > 10 && score < 20)
         {
-            speed = 1.1;
+            speed = 1.4;
         }
         else
         if (score > 20 && score < 25)
         {
-            speed = 1.3;
+            speed = 1.2;
         }
         else
         if (score > 25 && score < 35)
         {
-            speed = 1.5;
-        }
-        if (score > 35)
-        {
-            speed = 1.7;
+            speed = 1;
         }
         else
-            speed = 1;
+        if (score > 35 && score < 40)
+        {
+            speed = 0.8;
+        }
+        else
+        if (score > 40 && score < 45)
+        {
+            speed = 0.6;
+        }
+        else
+        if (score > 45 && score < 60)
+        {
+            speed = 0.5;
+        }
+        else
+        if (score > 60)
+        {
+            speed = 0.4;
+        }
+        else
+            speed = 1.6;
         fingersTimer.add(1 / SPAWN_RATE * speed);
     }
 
