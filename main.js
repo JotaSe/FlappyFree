@@ -438,19 +438,23 @@ function main() {
 
         fingersTimer.start();
         var speed;
-        if (score > 10 && score < 20)
+        if (score > 1 && score < 5)
         {
             speed = 1.3;
         }
-        else
-        if (score > 20 && score < 25)
+        if (score > 10 && score < 20)
         {
             speed = 1.1;
         }
         else
-        if (score > 25 && score < 35)
+        if (score > 20 && score < 25)
         {
             speed = 0.9;
+        }
+        else
+        if (score > 25 && score < 35)
+        {
+            speed = 0.8;
         }
         else
         if (score > 35 && score < 40)
