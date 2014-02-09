@@ -229,7 +229,7 @@ function main() {
     function createSound()
     {
         sound = new Howl({
-            urls: ['assets/spriteSound.wav','assets/spriteSound.mp3', 'assets/spriteSound.ogg'],
+            urls: ['assets/spriteSound.wav','assets/spriteSound.ogg'],
             sprite: {
                 bonus: [0, 550],
                 hit: [550, 750],
