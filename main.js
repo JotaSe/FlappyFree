@@ -117,7 +117,8 @@ function main() {
         bg.drawRect(0, 0, game.world.width, game.world.height);
         bg.endFill();
         // add background
-        _background = game.add.tileSprite(0, -230, game.world.width, game.world.height + 230, 'fondo');
+        var plus = game.world.height-800;
+        _background = game.add.tileSprite(0, game.world.height-800, game.world.width, game.world.height+(plus*-1), 'fondo');
         _background.tileScale.setTo(1, 1);
         // Credits 'yo
         credits = game.add.text(
