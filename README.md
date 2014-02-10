@@ -1,4 +1,4 @@
 FlappyFree
 ==========
 
-Game based on "Flappy Bird" forked of https://github.com/marksteve/dtmb
+Game based on "Flappy Bird" fork of https://github.com/marksteve/dtmb
