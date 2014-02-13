@@ -270,7 +270,7 @@ function main() {
         fingersTimer = new Phaser.Timer(game);
         fingersTimer.onEvent.add(spawnFingers);
         fingersTimer.start();
-        fingersTimer.add(2);
+        fingersTimer.add(1);
         //Spawn bullets
         bulletsTimer = new Phaser.Timer(game);
         bulletsTimer.onEvent.add(spawnBullets);
@@ -480,6 +480,7 @@ function main() {
         else
         if (score > 25 && score < 35)
         {
+            speed = 0.8;
         }
         else
         if (score > 35 && score < 40)
